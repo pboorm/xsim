@@ -513,8 +513,8 @@ if model_choice == "borus02":
         min_value=39.,
         max_value=45.,
         value = 42.,
-        step=1.,
-        format="%.0f",
+        step=0.01,
+        format="%.2f",
         key="logL210",
     )
     # generate our data
@@ -611,14 +611,13 @@ elif model_choice == "pexrav (R17B1)":
         format="%.3f",
         key="redshift",
     )
-
     logL210_c = st.sidebar.slider(
         "log(L2-10), Intrinsic",
         min_value=39.,
         max_value=45.,
         value = 42.,
-        step=1.,
-        format="%.0f",
+        step=0.01,
+        format="%.2f",
         key="logL210",
     )
     # generate our data
@@ -683,8 +682,8 @@ elif model_choice == "mytorus[coupled]":
         min_value=39.,
         max_value=45.,
         value = 42.,
-        step=1.,
-        format="%.0f",
+        step=0.01,
+        format="%.2f",
         key="logL210",
     )
     # generate our data
@@ -773,8 +772,8 @@ elif model_choice == "uxclumpy":
         min_value=39.,
         max_value=45.,
         value = 42.,
-        step=1.,
-        format="%.0f",
+        step=0.01,
+        format="%.2f",
         key="logL210",
     )
     # generate our data
@@ -786,7 +785,7 @@ F210_obs = AllModels(1).flux[0]
 logL210_obs = np.log10(F210_obs * 4. * np.pi * DL(redshift_c, "cm") ** 2)
 
 st.sidebar.text("log(L2-10), Observed = %.2f" %(logL210_obs))
-ymin = df["Total"].min()
+ymin = df["Total"].min() / 10.
 xmin = df["E_keV"].min()
 
 if model_choice == "mytorus[coupled]":
